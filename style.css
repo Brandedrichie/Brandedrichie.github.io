@@ -1,10 +1,10 @@
 body{
-  Background-color :blue;
+  Background-color :black;
   margin:0;
   padding:0;
 }
 .nav {
-  background-color: yellow; 
+  background-color: black; 
   list-style-type: none;
   text-align: center;
   margin: 0;
