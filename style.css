@@ -25,9 +25,9 @@ body {
   margin:0;
   padding:0;
   border-box:box-sizing;
-  font:var(--p);
+  font:var(--ff);
   background:var(--light) ;
-  color:var(--darm)
+  color:var(--dark)
   text-wrap:balance;
 }
 .nav {
