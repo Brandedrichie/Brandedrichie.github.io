@@ -1,7 +1,10 @@
 ::root {
+  /*color variable*/
   --light:#fdfffc;
   --dark:#020100;
   --accent:#ed1c24;
+
+  --
 }
 
 body {
