@@ -1,7 +1,7 @@
 ::root {
-  --light:fdfffc;
-  --dark:020100;
-  --accent:ed1c24;
+  --light:#fdfffc;
+  --dark:#020100;
+  --accent:#ed1c24;
 }
 
 body {
