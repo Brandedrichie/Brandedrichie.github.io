@@ -1,4 +1,10 @@
-  ::root {
+  *{
+    margin:0;
+  padding:0;
+    box-sizing :border-box ;
+    
+  }
+::root {
             --primary: #00ff88;
             --dark: #121212;
             --light: #ffffff;
@@ -22,9 +28,7 @@ html{
   scroll-behaviour:smooth;
 }
 body {
-  margin:0;
-  padding:0;
-  border-box:box-sizing;
+  
   font:var(--ff);
   background:var(--light) ;
   color:var(--dark)
