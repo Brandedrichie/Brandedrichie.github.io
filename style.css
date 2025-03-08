@@ -17,11 +17,18 @@
             --spacing6:80px;
             --spacing7:160px;
         }
-
+/* defining Global variables *\
+html{
+  scroll-behaviour:smooth;
+}
 body {
   margin:0;
   padding:0;
-  border-box:box-sizing
+  border-box:box-sizing;
+  font:var(--p);
+  background:var(--light) ;
+  color:var(--darm)
+  text-wrap:balance;
 }
 .nav {
   background-color: black; 
