@@ -1,11 +1,22 @@
-::root {
-  /*color variable*/
-  --light:#fdfffc;
-  --dark:#020100;
-  --accent:#ed1c24;
-
-  --
-}
+  ::root {
+            --primary: #00ff88;
+            --dark: #121212;
+            --light: #ffffff;
+            --gray: #2a2a2a;
+            --ff:"moto sans jp",serif;
+            --ff2:"Fira sans",serif;
+            /* the spaces are here to create a consistent layout*/
+            --p:1rem/1.5em var(--ff);
+            --h1:600 3rem/1.2 em var(--ff2);
+            --h2:600 2rem/1.2 em var(--ff2);
+            --spacing1:4px;
+            --spacing2:8px;
+            --spacing3:16px;
+            --spacing4:20px;
+            --spacing5:40px;
+            --spacing6:80px;
+            --spacing7:160px;
+        }
 
 body {
   margin:0;
