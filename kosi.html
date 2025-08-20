@@ -1,0 +1,452 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kosi-The golden tool that helps you boost your routine </title>
+  <style>
+    :root {
+      /* Brand Colors (IdealBrandits) */
+      --black: #020100;
+      --white: #FDFFFC;
+      --red: #ED1C24;
+      --navy: #235789;
+      --yellow: #F1D302;/* UI Palette */
+  --bg: #0b0d10;
+  --card: #121417;
+  --muted: #9aa4b2;
+  --muted-2: #6b7280;
+  --ring: rgba(255, 255, 255, 0.08);
+  --ring-strong: rgba(35, 87, 137, 0.35);
+  --accent: var(--navy);
+  --cta: var(--red);
+  --ok: #00b894;
+
+  /* Typography */
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --radius: 16px;
+  --radius-lg: 22px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--white);
+  background: radial-gradient(1000px 600px at 10% -10%, rgba(35,87,137,.15), transparent 60%),
+              radial-gradient(1000px 600px at 100% 0%, rgba(237,28,36,.12), transparent 60%),
+              var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px 64px;
+}
+
+header.app {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+  margin: 24px 0 16px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #2b6ca8);
+  box-shadow: 0 10px 30px rgba(35,87,137,.4), inset 0 0 0 2px rgba(255,255,255,.06);
+  display: grid; place-items: center;
+  font-weight: 800; letter-spacing: .5px;
+}
+
+h1 { font-size: clamp(22px, 3vw, 32px); margin: 0; }
+.subtitle { color: var(--muted); margin-top: 4px; font-size: 14px; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+
+button, .chip {
+  appearance: none; border: 0; cursor: pointer;
+  padding: 10px 14px; border-radius: 12px; font-weight: 600; font-size: 14px;
+  background: #1b1f24; color: var(--white);
+  box-shadow: inset 0 0 0 1px var(--ring);
+  transition: transform .06s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
+}
+
+button:hover { box-shadow: inset 0 0 0 1px var(--ring-strong), 0 4px 20px rgba(35,87,137,.25); }
+button:active { transform: translateY(1px); }
+
+.btn-primary { background: linear-gradient(180deg, var(--accent), #1f4c77); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 6px 22px rgba(35,87,137,.45); }
+.btn-accent { background: linear-gradient(180deg, var(--cta), #a3161b); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 6px 22px rgba(237,28,36,.45); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 860px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 60%);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 0 1px var(--ring);
+  padding: 18px;
+}
+
+.card h2 {
+  margin: 0 0 12px; font-size: 18px; letter-spacing: .3px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.card small { color: var(--muted); }
+
+.tasks { display: grid; gap: 10px; }
+.task {
+  display: grid; grid-template-columns: 28px 1fr auto; align-items: start; gap: 10px;
+  padding: 10px; border-radius: 12px;
+  background: rgba(255,255,255,.02);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.task input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--ok); cursor: pointer; }
+.task textarea, .task input[type="text"] {
+  width: 100%; background: transparent; border: 0; color: var(--white);
+  resize: vertical; min-height: 24px; font: inherit; outline: none;
+}
+
+.task .tag {
+  font-size: 12px; padding: 4px 8px; border-radius: 999px; color: #0c1220;
+  background: linear-gradient(180deg, #F1D302, #c9ad06);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.15);
+  align-self: center;
+}
+
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row > * { flex: 1 1 220px; }
+
+.goalbox, .note {
+  background: rgba(255,255,255,.02);
+  box-shadow: inset 0 0 0 1px var(--ring);
+  border-radius: var(--radius);
+  padding: 12px;
+  width: 100%;
+  color: var(--white);
+}
+
+.section-title { margin: 26px 0 10px; color: var(--muted); font-weight: 700; letter-spacing: .2px; text-transform: uppercase; font-size: 12px; }
+
+footer { margin-top: 26px; color: var(--muted-2); font-size: 12px; text-align: center; }
+
+/* --- Step 1 Upgrade: Add/Delete Tasks UI --- */
+.task { grid-template-columns: 28px 1fr auto auto; }
+.task .del-btn {
+  appearance: none; border: 0; cursor: pointer;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(255,255,255,.03); color: var(--muted);
+  box-shadow: inset 0 0 0 1px var(--ring);
+  font-weight: 800; line-height: 1; display: grid; place-items: center;
+}
+.task .del-btn:hover { color: var(--white); box-shadow: inset 0 0 0 1px var(--ring-strong); }
+.actions { display: flex; justify-content: flex-end; margin-top: 10px; }
+.add-task { font-size: 13px; padding: 8px 12px; background: rgba(255,255,255,.03); }
+
+/* Print styles */
+@media print {
+  body { background: #fff; color: #000; }
+  .card, .goalbox, .note { background: #fff; box-shadow: none; border: 1px solid #ddd; }
+  header.app .controls { display: none !important; }
+  .logo { background: #000; color: #fff; box-shadow: none; }
+  a { color: #000; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="app" role="banner">
+      <div class="title">
+        <div class="logo" aria-label="KOSI, an app that improves your life">KOSI</div>
+      </div>
+      <div class="controls" role="toolbar" aria-label="Planner controls">
+        <button class="btn-primary" id="saveBtn" title="Save your progress">Save</button>
+        <button id="clearBtn" title="Clear all data">Clear</button>
+        <button class="btn-accent" id="printBtn" title="Print or Save as PDF">Print / PDF</button>
+      </div>
+    </header>
+    <div>
+            <h1>Weekly Blueprint Planner</h1>
+          <div class="subtitle">Create → Share → Learn → Refine. Designed for a Visual Architect who balances mastery with impact.</div>
+        </div>
+    <section aria-labelledby="goals">
+  <div class="section-title" id="goals">Weekly Focus</div>
+  <div class="row">
+    <textarea class="goalbox" id="weeklyGoals" rows="3" placeholder="Write your 3 goals for the week. Example: Ship 1 case study • Post 3 times • Pitch 5 prospects"></textarea>
+    <textarea class="goalbox" id="theme" rows="3" placeholder="Theme or affirmation of the week (e.g., Done > Perfect, Bold Visibility, Stewardship)"></textarea>
+  </div>
+</section>
+
+<div class="section-title">Days</div>
+<div class="grid" id="weekGrid" role="list">
+
+  <!-- Monday -->
+  <article class="card" role="listitem" data-day="monday">
+    <h2>Monday <small>Creation & Direction</small></h2>
+    <div class="tasks">
+      <label class="task"><input type="checkbox"><input type="text" value="Big creative output (client or personal project)"><span class="tag">Output</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Skill sharpening: design fundamentals (composition, color)"><span class="tag">Mastery</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Share 1 progress post (social/portfolio)"><span class="tag">Visibility</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Set 3 goals & intention for the week"><span class="tag">Clarity</span></label>
+              </div>
+    <div class="actions"><button class="add-task" type="button">+ Add Task</button></div>
+  </article>
+
+  <!-- Tuesday -->
+  <article class="card" role="listitem" data-day="tuesday">
+    <h2>Tuesday <small>Execution & Networking</small></h2>
+    <div class="tasks">
+      <label class="task"><input type="checkbox"><input type="text" value="Creative output (ship a tangible piece)"><span class="tag">Output</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Visibility: post + engage + pitch leads"><span class="tag">Visibility</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Micro-drill: typography / motion / 3D"><span class="tag">Mastery</span></label>
+              </div>
+    <div class="actions"><button class="add-task" type="button">+ Add Task</button></div>
+  </article>
+
+  <!-- Wednesday -->
+  <article class="card" role="listitem" data-day="wednesday">
+    <h2>Wednesday <small>Skill Deep Dive</small></h2>
+    <div class="tasks">
+      <label class="task"><input type="checkbox"><input type="text" value="Small project: speed execution challenge"><span class="tag">Output</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Deep learning: study a master / case study"><span class="tag">Mastery</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Publish WIP (show the journey)"><span class="tag">Visibility</span></label>
+              </div>
+    <div class="actions"><button class="add-task" type="button">+ Add Task</button></div>
+  </article>
+
+  <!-- Thursday -->
+  <article class="card" role="listitem" data-day="thursday">
+    <h2>Thursday <small>Productivity & Systems</small></h2>
+    <div class="tasks">
+      <label class="task"><input type="checkbox"><input type="text" value="Finish/refine pending project"><span class="tag">Output</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Organize portfolio / Behance / IG content"><span class="tag">Systems</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Networking: collab talks, emails, DMs"><span class="tag">Visibility</span></label>
+              </div>
+    <div class="actions"><button class="add-task" type="button">+ Add Task</button></div>
+  </article>
+
+  <!-- Friday -->
+  <article class="card" role="listitem" data-day="friday">
+    <h2>Friday <small>Showcase & Feedback</small></h2>
+    <div class="tasks">
+      <label class="task"><input type="checkbox"><input type="text" value="Wrap something to show publicly"><span class="tag">Output</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Share it + request feedback"><span class="tag">Visibility</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Short fun exercise (keep it light)"><span class="tag">Mastery</span></label>
+              </div>
+    <div class="actions"><button class="add-task" type="button">+ Add Task</button></div>
+  </article>
+
+  <!-- Saturday -->
+  <article class="card" role="listitem" data-day="saturday">
+    <h2>Saturday <small>Inspiration & Expansion</small></h2>
+    <div class="tasks">
+      <label class="task"><input type="checkbox"><input type="text" value="Explore new tools/styles/industries"><span class="tag">Explore</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Free creation: passion project, no rules"><span class="tag">Play</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Journal: what inspired me this week?"><span class="tag">Reflect</span></label>
+              </div>
+    <div class="actions"><button class="add-task" type="button">+ Add Task</button></div>
+  </article>
+
+  <!-- Sunday -->
+  <article class="card" role="listitem" data-day="sunday">
+    <h2>Sunday <small>Rest & Spiritual Recharge</small></h2>
+    <div class="tasks">
+      <label class="task"><input type="checkbox"><input type="text" value="Spiritual reset: prayer, meditation, gratitude"><span class="tag">Spirit</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Light review: create • share • learn"><span class="tag">Review</span></label>
+      <label class="task"><input type="checkbox"><input type="text" value="Plan next week: 3 goals + intentions"><span class="tag">Plan</span></label>
+              </div>
+    <div class="actions"><button class="add-task" type="button">+ Add Task</button></div>
+  </article>
+
+</div>
+
+<div class="section-title">Notes</div>
+<textarea class="note" id="notes" rows="6" placeholder="Brain dump, insights, quotes, feedback to apply next week…"></textarea>
+
+<footer>
+  Built for flow: 70% produce • 30% perfect. – Express Exchange ✕ IdealBrandits
+</footer>
+
+  </div>  <script>
+    // Step 1 Upgrade: Add/Delete Tasks + Smarter Save/Load
+    (function () {
+      const STORAGE_KEY = 'ee-weekly-planner-v2';
+
+      const qs = (sel, root = document) => root.querySelector(sel);
+      const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+      function escapeHTML(s = '') {
+        return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;','\'':'&#39;'}[c]));
+      }
+
+      function createTask({ text = '', tag = 'Custom', done = false } = {}) {
+        const label = document.createElement('label');
+        label.className = 'task';
+        label.innerHTML = `
+          <input type="checkbox" ${done ? 'checked' : ''}>
+          <input type="text" value="${escapeHTML(text)}" placeholder="New task">
+          <span class="tag">${escapeHTML(tag)}</span>
+          <button class="del-btn" type="button" title="Delete task" aria-label="Delete task">×</button>
+        `;
+        const del = label.querySelector('.del-btn');
+        del.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          label.remove();
+          save();
+        });
+        return label;
+      }
+
+      function serialize() {
+        const data = {
+          weeklyGoals: qs('#weeklyGoals')?.value || '',
+          theme: qs('#theme')?.value || '',
+          notes: qs('#notes')?.value || '',
+          days: {}
+        };
+        qsa('.card').forEach(card => {
+          const day = card.dataset.day;
+          const tasks = qsa('.task', card).map(task => ({
+            done: qs('input[type="checkbox"]', task)?.checked || false,
+            text: qs('input[type="text"]', task)?.value || '',
+            tag: qs('.tag', task)?.textContent?.trim() || 'Custom'
+          }));
+          data.days[day] = tasks;
+        });
+        return data;
+      }
+
+      function clearTasksIn(card){
+        const container = qs('.tasks', card);
+        if (container) container.innerHTML = '';
+      }
+
+      function buildTasksIn(card, tasks){
+        const container = qs('.tasks', card);
+        tasks.forEach(t => container.appendChild(createTask(t)));
+      }
+
+      function deserialize(data) {
+        if (!data) return;
+        if (qs('#weeklyGoals')) qs('#weeklyGoals').value = data.weeklyGoals || '';
+        if (qs('#theme')) qs('#theme').value = data.theme || '';
+        if (qs('#notes')) qs('#notes').value = data.notes || '';
+
+        const hasAny = data.days && Object.values(data.days).some(arr => Array.isArray(arr));
+        if (hasAny) {
+          qsa('.card').forEach(card => {
+            const day = card.dataset.day;
+            const tasks = data.days?.[day] || [];
+            clearTasksIn(card);
+            buildTasksIn(card, tasks);
+          });
+        }
+        hydrateExistingTasks();
+      }
+
+      function hydrateExistingTasks(){
+        qsa('.card').forEach(card => {
+          qsa('.task', card).forEach(task => {
+            if (!qs('.del-btn', task)) {
+              const btn = document.createElement('button');
+              btn.type = 'button';
+              btn.className = 'del-btn';
+              btn.title = 'Delete task';
+              btn.setAttribute('aria-label','Delete task');
+              btn.textContent = '×';
+              btn.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); task.remove(); save();});
+              task.appendChild(btn);
+            }
+          });
+        });
+      }
+
+      function save() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(serialize()));
+          pulse('#saveBtn');
+        } catch (e) {
+          console.warn('Could not save to your browser.', e);
+        }
+      }
+
+      function load() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) { hydrateExistingTasks(); return; }
+          const data = JSON.parse(raw);
+          deserialize(data);
+        } catch (e) {
+          console.warn('No saved data');
+          hydrateExistingTasks();
+        }
+      }
+
+      function clearAll() {
+        if (!confirm('Clear all planner data?')) return;
+        localStorage.removeItem(STORAGE_KEY);
+        qsa('.card').forEach(card => clearTasksIn(card));
+        // Rebuild defaults by reloading the page to original HTML
+        location.reload();
+      }
+
+      function pulse(sel) {
+        const el = qs(sel);
+        if (!el) return;
+        el.style.transform = 'scale(0.98)';
+        setTimeout(() => { el.style.transform = ''; }, 120);
+      }
+
+      // Add Task button (event delegation)
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.add-task');
+        if (!btn) return;
+        const card = btn.closest('.card');
+        const container = qs('.tasks', card);
+        const node = createTask({ text: '', tag: 'Custom', done: false });
+        container.appendChild(node);
+        const input = node.querySelector('input[type="text"]');
+        input && input.focus();
+        save();
+      });
+
+      // Autosave on edits (both input & change to catch checkboxes)
+      let timer;
+      function debounceSave(){
+        clearTimeout(timer);
+        timer = setTimeout(save, 300);
+      }
+      document.addEventListener('input', debounceSave, true);
+      document.addEventListener('change', debounceSave, true);
+
+      // Control buttons
+      qs('#saveBtn')?.addEventListener('click', save);
+      qs('#clearBtn')?.addEventListener('click', clearAll);
+      qs('#printBtn')?.addEventListener('click', () => window.print());
+
+      // Boot
+      load();
+    })();
+  </script></body>
+        </html>
